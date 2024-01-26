@@ -2,6 +2,7 @@
 #include "muduo/net/TcpServer.h"
 
 #include <map>
+#include "muduo/base/Logging.h"
 
 using namespace muduo;
 using namespace muduo::net;
@@ -28,6 +29,7 @@ void onMessage(const TcpConnectionPtr& conn,
   if (crlf)
   {
     string user(buf->peek(), crlf);
+    LOG_INFO << "get user" << user;
     conn->send(getUser(user) + "\r\n");
     buf->retrieveUntil(crlf + 2);
     conn->shutdown();
@@ -36,10 +38,11 @@ void onMessage(const TcpConnectionPtr& conn,
 
 int main()
 {
-  users["schen"] = "Happy and well";
-  EventLoop loop;
-  TcpServer server(&loop, InetAddress(1079), "Finger");
-  server.setMessageCallback(onMessage);
-  server.start();
-  loop.loop();
+    printf("hello world");
+    users["schen"] = "Happy and well";
+    EventLoop loop;
+    TcpServer server(&loop, InetAddress(1079), "Finger");
+    server.setMessageCallback(onMessage);
+    server.start();
+    loop.loop();
 }

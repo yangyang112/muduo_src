@@ -1,3 +1,4 @@
+#include "muduo/base/Logging.h"
 #include "muduo/net/EventLoop.h"
 #include "muduo/net/TcpServer.h"
 
@@ -8,7 +9,8 @@ void onConnection(const TcpConnectionPtr& conn)
 {
   if (conn->connected())
   {
-    conn->shutdown();
+      LOG_INFO << "try to shutdown connection";
+      conn->shutdown();
   }
 }
 

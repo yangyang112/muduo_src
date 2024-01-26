@@ -19,6 +19,7 @@ class EchoServer
                  muduo::net::Buffer* buf,
                  muduo::Timestamp time);
 
+  // 优先有组合而非聚合
   muduo::net::TcpServer server_;
 };
 

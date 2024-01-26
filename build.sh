@@ -3,7 +3,8 @@
 set -x
 
 SOURCE_DIR=`pwd`
-BUILD_DIR=${BUILD_DIR:-../build}
+BUILD_DIR=./build
+
 BUILD_TYPE=${BUILD_TYPE:-release}
 INSTALL_DIR=${INSTALL_DIR:-../${BUILD_TYPE}-install-cpp11}
 CXX=${CXX:-g++}
@@ -25,3 +26,4 @@ mkdir -p $BUILD_DIR/$BUILD_TYPE-cpp11 \
 
 # cd $SOURCE_DIR && doxygen
 
+http://code.google.com/p/muduo/downloads/lis
